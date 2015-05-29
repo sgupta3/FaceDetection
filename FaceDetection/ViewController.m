@@ -10,7 +10,10 @@
 
 @interface ViewController ()
 
+- (IBAction)takePhoto:(UIButton *)sender;
+- (IBAction)choosePhoto:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *facesDetectedLabel;
 
 @end
 
@@ -18,8 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.imageView.image = [UIImage imageNamed:@"two_people.jpeg"];
-    [self markFaces:self.imageView.image];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,14 +28,64 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)markFaces:(UIImage *)facePicture
+- (IBAction)takePhoto:(UIButton *)sender {
+    
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+       [[[UIAlertView alloc] initWithTitle:@"No Camera found."
+                                                              message:@"Device has no camera"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil] show];
+        return;
+        
+    } else {
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+  
+}
+
+- (IBAction)choosePhoto:(UIButton *)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    self.imageView.image = chosenImage;
+    NSUInteger facesDetected = [self getFaceCount:chosenImage];
+    
+    if(facesDetected > 0) {
+        self.facesDetectedLabel.text = [NSString stringWithFormat:@"Faces detected: %lu",facesDetected];
+    } else {
+        self.facesDetectedLabel.text = @"No faces detected.";
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(NSUInteger)getFaceCount:(UIImage *)facePicture
 {
     CIImage* image = [CIImage imageWithCGImage:facePicture.CGImage];
     CIDetector* detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:[NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy]];
-    
     NSArray* features = [detector featuresInImage:image];
-    
-    NSLog(@"Faces detected: %lu ",(unsigned long)[features count]);
+    return [features count];
 }
 
 @end

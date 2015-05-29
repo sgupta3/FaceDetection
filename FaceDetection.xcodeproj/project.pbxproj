@@ -14,9 +14,6 @@
 		D8ED46261B17CF0C00A251B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8ED46251B17CF0C00A251B9 /* Images.xcassets */; };
 		D8ED46291B17CF0C00A251B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8ED46271B17CF0C00A251B9 /* LaunchScreen.xib */; };
 		D8ED46351B17CF0C00A251B9 /* FaceDetectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED46341B17CF0C00A251B9 /* FaceDetectionTests.m */; };
-		D8ED463F1B17CFA300A251B9 /* face.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D8ED463E1B17CFA300A251B9 /* face.jpeg */; };
-		D8ED46411B17D5B600A251B9 /* face1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8ED46401B17D5B600A251B9 /* face1.jpg */; };
-		D8ED46431B17D84C00A251B9 /* two_people.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D8ED46421B17D84C00A251B9 /* two_people.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +40,6 @@
 		D8ED462E1B17CF0C00A251B9 /* FaceDetectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceDetectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8ED46331B17CF0C00A251B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8ED46341B17CF0C00A251B9 /* FaceDetectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceDetectionTests.m; sourceTree = "<group>"; };
-		D8ED463E1B17CFA300A251B9 /* face.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face.jpeg; sourceTree = SOURCE_ROOT; };
-		D8ED46401B17D5B600A251B9 /* face1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face1.jpg; sourceTree = SOURCE_ROOT; };
-		D8ED46421B17D84C00A251B9 /* two_people.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = two_people.jpeg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +85,6 @@
 				D8ED461D1B17CF0C00A251B9 /* AppDelegate.m */,
 				D8ED461F1B17CF0C00A251B9 /* ViewController.h */,
 				D8ED46201B17CF0C00A251B9 /* ViewController.m */,
-				D8ED46421B17D84C00A251B9 /* two_people.jpeg */,
-				D8ED46401B17D5B600A251B9 /* face1.jpg */,
-				D8ED463E1B17CFA300A251B9 /* face.jpeg */,
 				D8ED46221B17CF0C00A251B9 /* Main.storyboard */,
 				D8ED46251B17CF0C00A251B9 /* Images.xcassets */,
 				D8ED46271B17CF0C00A251B9 /* LaunchScreen.xib */,
@@ -208,12 +199,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8ED463F1B17CFA300A251B9 /* face.jpeg in Resources */,
 				D8ED46241B17CF0C00A251B9 /* Main.storyboard in Resources */,
 				D8ED46291B17CF0C00A251B9 /* LaunchScreen.xib in Resources */,
-				D8ED46411B17D5B600A251B9 /* face1.jpg in Resources */,
 				D8ED46261B17CF0C00A251B9 /* Images.xcassets in Resources */,
-				D8ED46431B17D84C00A251B9 /* two_people.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
